@@ -1,0 +1,81 @@
+CanvasExample1:
+
+<CanvasExample1>:
+    canvas:
+        Rectangle:
+            pos: dp(100), dp(200)
+            size: dp(300), dp(200)
+        Line:
+            pos: ()
+
+<WidgetExample>:
+    cols:3
+    ToggleButton:
+        text: "OFF"
+        on_state: root.on_toggle_state(self)
+        size_hint: None, 1
+        width: "100dp"
+
+
+    Button:
+        text:"Click Here"
+        on_press: root.on_button_click()
+        disabled: not root.count_enable
+    Label:
+        text: root.my_text
+        font_name: "fonts/Lcd.ttf"
+        font_size: "100dp"
+        color: 0.9,0.7,1
+    Switch:
+        id: my_switch
+        #on_active: root.switch_active(self)
+        active: True
+        size_hint: None, 1
+        width: "100dp"
+    Slider:
+        id: my_slider
+        min: 0
+        max:100
+        value: 50
+        #on_value: root.slider_val(self)
+        disabled: not my_switch.active
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            text: str(int(my_slider.value))
+            font_name: "fonts/Lcd.ttf"
+            font_size: "100dp"
+            color: 0.9,0.7,.5
+        ProgressBar:
+            max: 100
+            value:my_slider.value
+    TextInput:
+        id: text_in
+        size_hint: None, 1
+        width: "100dp"
+        text: "Write Here"
+        multiline: False
+        on_text_validate: root.on_text_validate(self)
+    Label:
+        text: root.tex_in
+
+        
+        
+<Boxlayoutexample>:
+    orientation: 'vertical'
+    Button:
+        text: "A"
+    Button:
+        text: "B"
+    Button:
+        text: "C"
+
+<MainWidget>:
+    Button:
+        text: "Hello"
+        size: "200dp", "100dp"
+    Label:
+        text: "--------"
+        size: "200dp", "100dp"
+        pos: "500dp", "500dp"
